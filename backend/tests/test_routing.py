@@ -45,3 +45,8 @@ def test_stats_reports_correct_counts():
     stats = engine.stats()
     assert stats["nodes"] == 3
     assert stats["edges"] == 3  # 1->2, 2->3, and the direct 1->3 edge
+
+
+
+
+##just making sure the time is under control
