@@ -1,6 +1,6 @@
 """
 Tests for Phase 5 — recede_random() on FloodSimulator, and the LiveConditions
-background loop. The loop itself uses asyncio.sleep/create_task, so these
+background loop. a The loop itself uses asyncio.sleep/create_task, so these
 tests run it briefly with asyncio.run() and a short interval rather than
 mocking asyncio internals.
 """
