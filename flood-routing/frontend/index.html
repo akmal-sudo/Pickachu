@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Flood-Aware Evacuation Routing — Complete</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="map"></div>
+
+  <!-- Phase 6: always-visible stats readout — the <1s constraint, provable live -->
+  <div id="stats-bar">
+    <div class="stat">
+      <span class="stat-label">Last recompute</span>
+      <span id="stat-recompute" class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Last flood apply</span>
+      <span id="stat-flood-apply" class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Last dispatch</span>
+      <span id="stat-dispatch" class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span id="live-pulse" class="live-pulse"></span>
+      <span class="stat-label">Live mode</span>
+      <span id="stat-live" class="stat-value">off</span>
+    </div>
+  </div>
+
+  <div id="panel">
+    <h3><span id="ws-status"></span>Flood-Aware Evacuation Routing</h3>
+    <p class="hint">Click the map to set an origin, click again to set a destination.</p>
+
+    <div class="section-label">Flooding</div>
+    <div class="controls">
+      <button id="flood-btn">🌊 Simulate Flood</button>
+      <button id="reset-btn">↺ Reset Floods</button>
+    </div>
+    <div class="controls">
+      <button id="live-start-btn">▶ Start Live Mode</button>
+      <button id="live-stop-btn">⏸ Stop Live Mode</button>
+    </div>
+
+    <div class="section-label">Fleet Dispatch</div>
+    <div class="controls">
+      <button id="route-mode-btn">🖱 Route Mode</button>
+      <button id="add-vehicle-btn">🚑 Place Vehicle</button>
+      <button id="add-victim-btn">📍 Place Victim</button>
+    </div>
+    <div class="controls">
+      <button id="dispatch-btn">⚡ Run Dispatch</button>
+      <button id="clear-dispatch-btn">✕ Clear Fleet</button>
+    </div>
+
+    <div class="section-label">Safe Zones</div>
+    <div class="controls">
+      <button id="show-safezones-btn">🏫 Show Safe Zones</button>
+      <button id="route-safezones-btn">🏠 Route Victims Home</button>
+    </div>
+
+    <div id="log">Waiting for backend...</div>
+  </div>
+
+  <!-- Phase 6: legend -->
+  <div id="legend">
+    <div class="legend-title">Legend</div>
+    <div class="legend-row"><span class="swatch route"></span> Active route</div>
+    <div class="legend-row"><span class="swatch flood-mild"></span> Flooded — passable</div>
+    <div class="legend-row"><span class="swatch flood-severe"></span> Flooded — impassable</div>
+    <div class="legend-row"><span class="swatch safezone-route"></span> Route to safe zone</div>
+    <div class="legend-row">🚑 Vehicle &nbsp; 📍 Victim &nbsp; 🏫 Safe zone</div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

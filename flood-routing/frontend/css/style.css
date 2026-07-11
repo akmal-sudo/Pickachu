@@ -1,0 +1,215 @@
+body { margin: 0; font-family: system-ui, sans-serif; }
+
+#map {
+  height: 100vh;
+  width: 100%;
+}
+
+#panel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  background: white;
+  padding: 14px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  width: 260px;
+}
+
+#panel h3 {
+  margin: 0 0 6px 0;
+  font-size: 15px;
+}
+
+.hint {
+  font-size: 12px;
+  color: #555;
+  margin: 0 0 8px 0;
+}
+
+#log {
+  font-size: 12px;
+  color: #222;
+  line-height: 1.5;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 10px 0;
+}
+
+.controls button {
+  flex: 1;
+  font-size: 12px;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+}
+
+#flood-btn { background: #d7263d; }
+#flood-btn:hover { background: #b91f33; }
+
+#reset-btn { background: #2b8cbe; }
+#reset-btn:hover { background: #21739c; }
+
+#route-mode-btn { background: #555; }
+#route-mode-btn:hover { background: #333; }
+
+#add-vehicle-btn { background: #2e8b57; }
+#add-vehicle-btn:hover { background: #256e45; }
+
+#add-victim-btn { background: #e07b00; }
+#add-victim-btn:hover { background: #b86300; }
+
+#dispatch-btn { background: #6a3fd6; }
+#dispatch-btn:hover { background: #5630b0; }
+
+#clear-dispatch-btn { background: #999; }
+#clear-dispatch-btn:hover { background: #777; }
+
+.emoji-icon {
+  font-size: 20px;
+  text-align: center;
+  line-height: 24px;
+}
+
+#ws-status {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-right: 6px;
+}
+
+#ws-status.connected { background: #2ecc71; }
+#ws-status.disconnected { background: #d7263d; }
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #888;
+  margin: 12px 0 6px 0;
+}
+
+.section-label:first-of-type {
+  margin-top: 0;
+}
+
+#live-start-btn { background: #16a34a; }
+#live-start-btn:hover { background: #128038; }
+
+#live-stop-btn { background: #64748b; }
+#live-stop-btn:hover { background: #4b5768; }
+
+#show-safezones-btn { background: #0891b2; }
+#show-safezones-btn:hover { background: #0a7490; }
+
+#route-safezones-btn { background: #ca8a04; }
+#route-safezones-btn:hover { background: #a16d04; }
+
+/* Phase 6 — always-visible stats readout */
+#stats-bar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background: rgba(20, 20, 25, 0.88);
+  color: white;
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: flex;
+  gap: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-size: 12px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.stat-label {
+  color: #9ca3af;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.stat-value {
+  font-size: 16px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-value.ok { color: #4ade80; }
+.stat-value.warn { color: #f87171; }
+
+.live-pulse {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #64748b;
+  margin-right: 4px;
+}
+
+.live-pulse.active {
+  background: #16a34a;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6); }
+  70% { box-shadow: 0 0 0 6px rgba(22, 163, 74, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+}
+
+/* Phase 6 — legend */
+#legend {
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  z-index: 1000;
+  background: white;
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  font-size: 12px;
+  color: #333;
+}
+
+.legend-title {
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.swatch {
+  display: inline-block;
+  width: 16px;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.swatch.route { background: #2b8cbe; height: 4px; }
+.swatch.flood-mild { background: #e07b00; }
+.swatch.flood-severe { background: #8b0000; }
+.swatch.safezone-route { background: #ca8a04; }
