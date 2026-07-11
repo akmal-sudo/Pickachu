@@ -3,7 +3,7 @@ Phase 3 — Fleet dispatch.
 
 Given N vehicle locations and M victim locations, finds the assignment of
 vehicles to victims that minimizes TOTAL response time across the whole
-fleet — not just "send the nearest vehicle to each victim" (which can be
+fleet — not just "send the nearest a vehicle to each victim" (which can be
 badly suboptimal once multiple victims are involved).
 
 Uses the Hungarian algorithm (scipy.optimize.linear_sum_assignment), which
